@@ -1,12 +1,18 @@
-use std::fmt::{Display, Formatter, Result};
+use std::{
+    error::Error,
+    fmt::{Display, Formatter, Result},
+    num::NonZeroUsize,
+};
 
 #[derive(Debug)]
 pub enum BoardInitializationError {
     ChainLargerThanBoard {
-        board_size: usize,
-        chain_size: usize,
+        board_size: NonZeroUsize,
+        chain_size: NonZeroUsize,
     },
 }
+
+impl Error for BoardInitializationError {}
 
 impl Display for BoardInitializationError {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result {

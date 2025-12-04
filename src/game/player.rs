@@ -6,7 +6,7 @@ pub enum Player {
 }
 
 impl Player {
-    pub fn other(&self) -> Self {
+    pub const fn other(&self) -> Self {
         match self {
             Self::Cross => Self::Circle,
             Self::Circle => Self::Cross,
